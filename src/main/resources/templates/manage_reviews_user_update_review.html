@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html>
+<head>
+    <title>Update review</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- -->
+            <a class="nav-link" th:href="@{'showBooks?userId='+${userId}+'&bookId='+${bookId}}">Show books</a>
+            <!-- -->
+            <a class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
+            <!-- -->
+            <a class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
+            <!-- -->
+            <a class="nav-link" th:href="showBooksGuest">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+<br>
+
+<br>
+<div class="container mt-2 col-lg-5">
+    <div class="card-body card mt-5">
+        <div class="card-thumbnail">
+        <!-- -->
+        <h2><a class="linkS fs-5 text" th:href="@{'showBook?bookId='+${book.bookId}+'&userId='+${userId}}">Book:<span th:text="${book.title}"/></a></h2>
+        </div>
+    <h2 class="mb-5">Update review</h2>
+    <!-- -->
+    <form th:action="@{updateReview}" th:object="${review}" method="post">
+        <!-- -->
+        <input type="hidden" th:field="*{reviewId}" th:value="${reviewId}"/>
+        <!-- -->
+        <input type="hidden" th:field="*{userId}" th:value="${userId}"/>
+        <!-- -->
+        <input type="hidden" th:field="*{bookId}" th:value="${bookId}"/>
+        <label class="form-label">Stars:&nbsp;:</label>
+        <!-- -->
+        <select class="form-control mb-3" th:field="*{stars}">
+            <!-- -->
+            <div th:each="str : ${starsList}">
+                <!-- -->
+                <option th:value="${str}" th:text="${str}"></option>
+            <!-- -->
+            </div>
+        <!-- -->
+        </select>
+        <label class="form-label">Description:</label>
+        <!-- -->
+        <p><textarea class="form-control pb-2" placeholder="What do you think of the book?" th:field="*{description}"/></p>
+        <!-- -->
+        <input class="btn btn-primary" type="submit" value="Update review">
+    <!-- -->
+    </form>
+
+<br>
+    <!-- -->
+    <div th:text="${message}"></div>
+
+    </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>

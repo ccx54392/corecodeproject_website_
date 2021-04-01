@@ -1,0 +1,8 @@
+.bg{
+    background-image: url(images/bg.jpg);
+    opacity: 0.90;
+}
+.linkS{
+    text-decoration:none;
+    color:black;
+}
