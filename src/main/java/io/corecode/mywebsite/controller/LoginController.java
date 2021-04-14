@@ -2,8 +2,8 @@ package io.corecode.mywebsite.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Login;
 import io.corecode.mywebsite.model.User;
@@ -35,7 +35,7 @@ public class LoginController {
     public String doLogin(@ModelAttribute("login") Login login, Map<String, Object> model) throws Exception {
 
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "user").asString();
         if (response.getStatus() == 200) {
             Type usersListType = new TypeToken<ArrayList<User>>() {

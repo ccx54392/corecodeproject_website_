@@ -1,8 +1,8 @@
 package io.corecode.mywebsite.controller;
 
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Writer;
 import io.corecode.mywebsite.repository.WriterRepository;
@@ -41,7 +41,7 @@ public class WriterController {
     @GetMapping("deleteWriter")
     public String deleteWriter(@RequestParam("writerId") int writerId, Map<String, Object> model) throws Exception {
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.delete(MyConstants.url+"writer/"+writerId)
                 .asString();
 

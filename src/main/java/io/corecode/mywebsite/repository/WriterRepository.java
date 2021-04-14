@@ -2,8 +2,8 @@ package io.corecode.mywebsite.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Publisher;
 import io.corecode.mywebsite.model.Writer;
@@ -15,7 +15,7 @@ import java.util.List;
 public class WriterRepository {
     public List<Writer> getAllWriters() throws Exception {
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "writer").asString();
 
         Type writerListType = new TypeToken<ArrayList<Writer>>() {
@@ -30,7 +30,7 @@ public class WriterRepository {
     public Writer getWriterById(int writerId) throws Exception {
 
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "writer/" + writerId).asString();
 
         Gson gson = new Gson();
@@ -40,7 +40,7 @@ public class WriterRepository {
     }
 
     public int updateWriter(Writer writer) throws Exception{
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.put(MyConstants.url+"writer/"+writer.getWriterId())
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"name\": \""+writer.getName()+"\"\r\n}")
@@ -49,7 +49,7 @@ public class WriterRepository {
     }
 
     public int createWriter(Writer writer) throws Exception{
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(MyConstants.url+"writer/")
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"name\": \""+writer.getName()+"\"\r\n}")

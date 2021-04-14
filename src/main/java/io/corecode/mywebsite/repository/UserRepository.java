@@ -2,8 +2,8 @@ package io.corecode.mywebsite.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Book;
 import io.corecode.mywebsite.model.User;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserRepository {
     public List<User> getAllUsers() throws Exception {
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "user").asString();
 
         Type usersListType = new TypeToken<ArrayList<User>>() {
@@ -27,7 +27,7 @@ public class UserRepository {
     }
 
     public User getUserById(int userId) throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "user/" + userId).asString();
 
         Gson gson = new Gson();
@@ -37,7 +37,7 @@ public class UserRepository {
     }
 
     public int updateUser(User user) throws Exception{
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.put(MyConstants.url+"user/"+user.getUserId())
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"userName\": \""+user.getUserName()+"\",\r\n    \"password\": \""+user.getPassword()+"\",\r\n    \"role\": \""+user.getRole()+"\"\r\n}")
@@ -46,7 +46,7 @@ public class UserRepository {
     }
 
     public int deleteUserById(int userId) throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.delete(MyConstants.url+"user/"+userId)
                 .asString();
         return response.getStatus();

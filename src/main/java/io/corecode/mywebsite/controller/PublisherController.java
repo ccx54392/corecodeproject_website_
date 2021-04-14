@@ -1,8 +1,8 @@
 package io.corecode.mywebsite.controller;
 
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Publisher;
 import io.corecode.mywebsite.repository.PublisherRepository;
@@ -26,7 +26,7 @@ public class PublisherController {
     @PostMapping("createPublisher")
     public String createBook(@ModelAttribute("publisher") Publisher publisher, Map<String,Object> model) throws Exception {
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(MyConstants.url+"publisher/")
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"name\":\" "+publisher.getName() +"\"\r\n}\r\n")
@@ -42,7 +42,7 @@ public class PublisherController {
     @GetMapping("deletePublisher")
     public String deleteBook(@RequestParam("publisherId") int publisherId, Map<String, Object> model) throws Exception {
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.delete(MyConstants.url+"publisher/"+publisherId)
                 .asString();
 

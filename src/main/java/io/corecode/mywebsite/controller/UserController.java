@@ -1,7 +1,7 @@
 package io.corecode.mywebsite.controller;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Book;
 import io.corecode.mywebsite.model.Publisher;
@@ -37,7 +37,7 @@ public class UserController {
 
         user.setRole("user");
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(MyConstants.url + "user/")
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"userName\": \"" + user.getUserName() + "\",\r\n    \"password\": \"" +

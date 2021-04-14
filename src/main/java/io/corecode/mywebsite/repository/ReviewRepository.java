@@ -2,8 +2,8 @@ package io.corecode.mywebsite.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
 import io.corecode.mywebsite.MyConstants;
 import io.corecode.mywebsite.model.Review;
 
@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ReviewRepository {
     public List<Review> getAllReviewsByBookId(int bookId) throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "review").asString();
 
         Type reviewsListType = new TypeToken<ArrayList<Review>>() {
@@ -34,7 +34,7 @@ public class ReviewRepository {
     }
 
     public Review getReviewById(int reviewId) throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "review/" + reviewId)
                 .asString();
         Review review = new Gson().fromJson(response.getBody(), Review.class);
@@ -42,7 +42,7 @@ public class ReviewRepository {
     }
 
     public int deleteReviewById(int reviewId) throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.delete(MyConstants.url + "review/" + reviewId)
                 .asString();
         return response.getStatus();
@@ -52,7 +52,7 @@ public class ReviewRepository {
         String temp = review.getDescription().replaceAll("(\\r\\n)", " ");
         review.setDescription(temp);
 
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.put(MyConstants.url + "review/" + review.getReviewId())
                 .header("Content-Type", "application/json")
                 .body("{\r\n    \"userId\": " + review.getUserId() + ",\r\n    \"bookId\": " + review.getBookId() +
@@ -62,7 +62,7 @@ public class ReviewRepository {
     }
 
     public List<Review> getAllReviews() throws Exception {
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "review").asString();
 
         Type reviewsListType = new TypeToken<ArrayList<Review>>() {
@@ -75,7 +75,7 @@ public class ReviewRepository {
     }
 
     public int createReview(Review review) throws Exception{
-        Unirest.setTimeouts(0, 0);
+        //Unirest.setTimeouts(0, 0);
         String temp = review.getDescription().replaceAll("(\\r\\n)", " ");
         review.setDescription(temp);
         HttpResponse<String> response1 = Unirest.post(MyConstants.url + "review/")
