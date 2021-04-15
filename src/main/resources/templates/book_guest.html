@@ -5,37 +5,39 @@
 <head>
     <title>Book page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="images/main.css">
 </head>
-<body>
+<body class="bg">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <!-- -->
-            <a class="nav-link" href="showBooksGuest">Show books</a>
-            <!-- -->
-            <a class="nav-link" href="login">Login</a>
-            <!-- -->
-            <a class="nav-link" href="createAccount">Create account</a>
-          </div>
+            <div class="navbar-nav">
+                <!-- -->
+                <a id="showBooks" class="nav-link" href="showBooksGuest">Show books</a>
+                <!-- -->
+                <a id="login" class="nav-link" href="login">Login</a>
+                <!-- -->
+                <a id="createAccount" class="nav-link" href="createAccount">Create account</a>
+            </div>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 my-5">
                  <p>
-                <img width="100%" th:src="${book.picture}"/>
+                <img id="bookPicture" width="100%" th:src="${book.picture}"/>
                  <!-- -->
-                 <h2 class="fs-2 text" th:text="${book.title}"></h2>
+                 <h2 id="bookTitle" class="fs-2 text" th:text="${book.title}"></h2>
                 <hr>
                 <!-- -->
-                <p class="fs-5" th:text="${book.description}"></p>
+                <p id="bookDescription" class="fs-5" th:text="${book.description}"></p>
             </div>
             <div class="col-md-4 my-5">
 
@@ -45,12 +47,12 @@
                      <div th:each="review : ${book.reviews}" class="card-box py-3">
                         <span class="fw-bold"> Review written by:&nbsp;
                           <!-- -->
-                          <span th:text="${review.user.userName}"/> </span>
+                          <span th:id="@{'user'+${review.reviewId}}" th:text="${review.user.userName}"/> </span>
 
                             <p class="fst-italic">
-                            <img th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
+                            <img th:id="@{'stars'+${review.reviewId}}" th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
                             <!-- -->
-                            <div th:text="${review.description}"/>
+                            <div th:id="@{'reviewDescription'+${review.reviewId}}" th:text="${review.description}"/>
                             </p>
 
 
@@ -62,7 +64,7 @@
 
                     <br>
                         <!-- -->
-                        <div th:text="${message}"></div>
+                        <div id="message" th:text="${message}"></div>
 
 
             </div>

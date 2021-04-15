@@ -55,10 +55,10 @@
                             <!-- -->
                             <span th:if="${userId} == ${review.user.userId}">
                                 <!-- -->
-                                <a id="@{'delete'+${review.reviewId}}" class="btn btn-danger"  th:href="@{'deleteReview?reviewId='+${review.reviewId}+'&bookId='+${bookId}+'&userId='+${userId}}">Delete</a>
+                                <a th:id="@{'delete'+${review.reviewId}}" class="btn btn-danger"  th:href="@{'deleteReview?reviewId='+${review.reviewId}+'&bookId='+${bookId}+'&userId='+${userId}}">Delete</a>
                                 &nbsp;
                                 <!-- -->
-                                <a id="@{'update'+${review.reviewId}}" class="btn btn-info" th:href="@{'updateReview?reviewId='+${review.reviewId}+'&bookId='+${bookId}+'&userId='+${userId}}">Update</a>
+                                <a th:id="@{'update'+${review.reviewId}}" class="btn btn-info" th:href="@{'updateReview?reviewId='+${review.reviewId}+'&bookId='+${bookId}+'&userId='+${userId}}">Update</a>
                             <!-- -->
                             </span>
 
