@@ -16,11 +16,11 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Show books</a>
+                <a id="showBooks" class="nav-link" href="showBooksGuest">Show books</a>
                 <!-- -->
-                <a class="nav-link" href="login">Login</a>
+                <a id="login" class="nav-link" href="login">Login</a>
                 <!-- -->
-                <a class="nav-link" href="createAccount">Create account</a>
+                <a id="createAccount" class="nav-link" href="createAccount">Create account</a>
             </div>
         </div>
     </div>
@@ -33,20 +33,20 @@
             <form th:action="@{createUser}" th:object="${user}" method="post">
                 <label class="form-label">User name:</label>
                 <!-- -->
-                <input type="text" class="form-control mb-3" th:field="*{userName}"/>
+                <input id="userName" type="text" class="form-control mb-3" th:field="*{userName}"/>
                 <label class="form-label">Password:</label>
                 <!-- -->
-                <input type="password" class="form-control mb-3" th:field="*{password}"/>
+                <input id="password" type="password" class="form-control mb-3" th:field="*{password}"/>
                 <br>
                 <br>
                 <!-- -->
-                <input class="btn btn-primary" type="submit" value="Create account">
+                <input id="submitCreateAccount" class="btn btn-primary" type="submit" value="Create account">
 
             <!-- -->
             </form>
             <br>
             <!-- -->
-            <div th:text="${message}"></div>
+            <div id="message" th:text="${message}"></div>
 
         </div>
     </div>

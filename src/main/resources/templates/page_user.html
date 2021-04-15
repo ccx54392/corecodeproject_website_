@@ -19,13 +19,13 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!-- -->
-        <a class="nav-link" th:href="@{'showBooks?userId='+${userId}}">Show books</a>
+        <a id="showBooks" class="nav-link" th:href="@{'showBooks?userId='+${userId}}">Show books</a>
         <!-- -->
-        <a class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
+        <a id="myReviews" class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
         <!-- -->
-        <a class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
+        <a id="updateMyInformation" class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
         <!-- -->
-        <a class="nav-link" href="showBooksGuest">Logout</a>
+        <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
       </div>
     </div>
   </div>
@@ -38,12 +38,12 @@
                     <div class="card-box p-4">
                         <div class="card-thumbnail pb-4">
                             <!-- -->
-                            <a th:href="@{'/showBook?bookId='+${book.bookId}+'&userId='+${userId}}">
+                            <a th:id="@{'cover'+${book.bookId}}"  th:href="@{'/showBook?bookId='+${book.bookId}+'&userId='+${userId}}">
                             <img class="card-img-top" th:src="${book.cover}"/>
                             </a>
                         </div>
                         <!-- -->
-                        <h2><a class="linkS fs-5 text" th:href="@{'/showBook?bookId='+${book.bookId}+'&userId='+${userId}}" th:text="${book.title}"></a> </h2>
+                        <h2><a th:id="@{'title'+${book.bookId}}" class="linkS fs-5 text" th:href="@{'/showBook?bookId='+${book.bookId}+'&userId='+${userId}}" th:text="${book.title}"></a> </h2>
                     </div>
                 </div>
                 <!-- -->

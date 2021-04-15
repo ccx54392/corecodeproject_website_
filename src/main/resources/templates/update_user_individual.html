@@ -18,13 +18,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <!-- -->
-                <a class="nav-link" th:href="@{'showBooks?userId='+${user.userId}}">Show books</a>
+                <a id="showBooks" class="nav-link" th:href="@{'showBooks?userId='+${user.userId}}">Show books</a>
                 <!-- -->
-                <a class="nav-link" th:href="@{'myReviews?userId='+${user.userId}}">My reviews</a>
+                <a id="myReviews" class="nav-link" th:href="@{'myReviews?userId='+${user.userId}}">My reviews</a>
                 <!-- -->
-                <a class="nav-link" th:href="@{'updateUserIndividual?userId='+${user.userId}}">Change personal information</a>
+                <a id="updateMyInformation" class="nav-link" th:href="@{'updateUserIndividual?userId='+${user.userId}}">Change personal information</a>
                 <!-- -->
-                <a class="nav-link" th:href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" th:href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -39,16 +39,16 @@
                 <input type="hidden" th:field="*{userId}" th:value="${userId}"/>
                 <label class="form-label">User name:</label>
                     <!-- -->
-                <input type="text" class="form-control mb-3" th:field="*{userName}"/>
+                <input id="userName" type="text" class="form-control mb-3" th:field="*{userName}"/>
                 <label class="form-label">Password:</label>
                     <!-- -->
-                <input type="password" class="form-control" th:field="*{password}"/>
+                <input id="password" type="password" class="form-control" th:field="*{password}"/>
                     <!-- -->
                 <input type="hidden" th:field="*{role}" value="${role}"/>
                 <br>
                 <br>
                 <!-- -->
-                <input class="btn btn-primary" type="submit" value="Update information">
+                <input id="submitUpdateInformation" class="btn btn-primary" type="submit" value="Update information">
             <!-- -->
             </form>
 
@@ -56,7 +56,7 @@
 
             <br>
             <!-- -->
-            <div th:text="${message}"></div>
+            <div id="message" th:text="${message}"></div>
 
     </div>
 </div>

@@ -18,11 +18,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!-- -->
-        <a class="nav-link" href="showBooksGuest">Show books</a>
+        <a id="showBooks" class="nav-link" href="showBooksGuest">Show books</a>
         <!-- -->
-        <a class="nav-link" href="login">Login</a>
+        <a id="login" class="nav-link" href="login">Login</a>
         <!-- -->
-        <a class="nav-link" href="createAccount">Create account</a>
+        <a id="createAccount" class="nav-link" href="createAccount">Create account</a>
       </div>
     </div>
   </div>
@@ -35,12 +35,12 @@
                     <div class="card-box p-4">
                         <div class="card-thumbnail pb-4">
                             <!-- -->
-                            <a th:href="@{'/showBookGuest?bookId='+${book.bookId}}">
+                            <a th:id="@{'cover'+${book.bookId}}" th:href="@{'/showBookGuest?bookId='+${book.bookId}}">
                             <img class="card-img-top" th:src="${book.cover}"/>
                             </a>
                         </div>
                         <!-- -->
-                        <h2><a class="linkS fs-5 text" th:href="@{'/showBookGuest?bookId='+${book.bookId}}" th:text="${book.title}"></a> </h2>
+                        <h2><a th:id="@{'title'+${book.bookId}}" class="linkS fs-5 text" th:href="@{'/showBookGuest?bookId='+${book.bookId}}" th:text="${book.title}"></a> </h2>
                     </div>
                 </div>
                 <!-- -->
