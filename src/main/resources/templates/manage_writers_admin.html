@@ -16,19 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="home">Home</a>
+                <a id="home" class="nav-link" href="home">Home</a>
                 <!-- -->
-                <a class="nav-link" href="updatePublisherList">Manage Publishers</a>
+                <a id="managePublishers" class="nav-link" href="updatePublisherList">Manage Publishers</a>
                 <!-- -->
-                <a class="nav-link" href="manageWriters">Manage Writers</a>
+                <a id="manageWriters" class="nav-link" href="manageWriters">Manage Writers</a>
                 <!-- -->
-                <a class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
+                <a id="manageReviews" class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
                 <!-- -->
-                <a class="nav-link" href="updateBookList">Manage Books</a>
+                <a id="manageBooks" class="nav-link" href="updateBookList">Manage Books</a>
                 <!-- -->
-                <a class="nav-link" href="updateUserList">Manage Users</a>
+                <a id="manageUsers" class="nav-link" href="updateUserList">Manage Users</a>
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
         <div class="mb-5">
             <h3 class="mb-4">Manage writers</h3>
             <!-- -->
-            <a class="btn btn-info col-3"  href="createWriter">Create Writer</a>
+            <a id="createWriter" class="btn btn-info col-3"  href="createWriter">Create Writer</a>
             <hr>
         </div>
         <!-- -->
@@ -50,11 +50,11 @@
                         <img class="card-img-top mb-5" src="images/writer.png"/>
                     </div>
                     <!-- -->
-                    <h4 class="fs-5 text" th:text="${writer.name}"></h4>
+                    <h4 th:id="@{'writer'+${writer.writerId}}" class="fs-5 text" th:text="${writer.name}"></h4>
                     <!-- -->
-                    <a class="btn btn-primary"  th:href="@{'updateWriter?writerId='+${writer.writerId}}">Edit</a>
+                    <a th:id="@{'edit'+${writer.writerId}}" class="btn btn-primary"  th:href="@{'updateWriter?writerId='+${writer.writerId}}">Edit</a>
                     <!-- -->
-                    <a class="btn btn-danger"  th:href="@{'deleteWriter?writerId='+${writer.writerId}}">Delete</a>
+                    <a th:id="@{'delete'+${writer.writerId}}" class="btn btn-danger"  th:href="@{'deleteWriter?writerId='+${writer.writerId}}">Delete</a>
                 </div>
             </div>
         <!-- -->
@@ -62,7 +62,7 @@
 
     <br>
     <!-- -->
-    <div th:text="${message}"></div>
+    <div id="message" th:text="${message}"></div>
 
 </div>
 

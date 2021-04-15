@@ -16,19 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="home">Home</a>
+                <a id="home" class="nav-link" href="home">Home</a>
                 <!-- -->
-                <a class="nav-link" href="updatePublisherList">Manage Publishers</a>
+                <a id="managePublishers" class="nav-link" href="updatePublisherList">Manage Publishers</a>
                 <!-- -->
-                <a class="nav-link" href="manageWriters">Manage Writers</a>
+                <a id="manageWriters" class="nav-link" href="manageWriters">Manage Writers</a>
                 <!-- -->
-                <a class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
+                <a id="manageReviews" class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
                 <!-- -->
-                <a class="nav-link" href="updateBookList">Manage Books</a>
+                <a id="manageBooks" class="nav-link" href="updateBookList">Manage Books</a>
                 <!-- -->
-                <a class="nav-link" href="updateUserList">Manage Users</a>
+                <a id="manageUsers" class="nav-link" href="updateUserList">Manage Users</a>
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -46,24 +46,24 @@
 
                         <span class="fw-bold"> Book:&nbsp;
                         <!-- -->
-                        <span th:text="${review.book.title}"/> </span>
+                        <span th:id="@{'title'+${review.reviewId}}" th:text="${review.book.title}"/> </span>
 
                         <span class="fw-bold"> Writer:&nbsp;
                         <!-- -->
-                        <span th:text="${review.book.writer.name}"/> </span>
+                        <span th:id="@{'writer'+${review.reviewId}}" th:text="${review.book.writer.name}"/> </span>
                         <br>
                         <span class="fw-bold"> Review written by:&nbsp;
                         <!-- -->
-                        <span th:text="${review.user.userName}"/> </span>
+                        <span th:id="@{'user'+${review.reviewId}}" th:text="${review.user.userName}"/> </span>
 
 
                             <p class="fst-italic">
-                            <img th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
+                            <img th:id="@{'stars'+${review.reviewId}}" th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
                             <!-- -->
-                            <span th:text="${review.description}"/>
+                            <span th:id="@{'description'+${review.reviewId}}" th:text="${review.description}"/>
                             </p>
                                 <!-- -->
-                                <a class="btn btn-danger"  th:href="@{'deleteReviewAdmin?reviewId='+${review.reviewId}}">Delete</a>
+                                <a th:id="@{'delete'+${review.reviewId}}" class="btn btn-danger"  th:href="@{'deleteReviewAdmin?reviewId='+${review.reviewId}}">Delete</a>
 
 
 
@@ -74,7 +74,7 @@
 
                     <br>
                         <!-- -->
-                        <div th:text="${message}"></div>
+                        <div id="message" th:text="${message}"></div>
 
 
             </div>

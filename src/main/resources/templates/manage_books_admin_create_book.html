@@ -16,19 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="home">Home</a>
+                <a id="home" class="nav-link" href="home">Home</a>
                 <!-- -->
-                <a class="nav-link" href="updatePublisherList">Manage Publishers</a>
+                <a id="managePublishers" class="nav-link" href="updatePublisherList">Manage Publishers</a>
                 <!-- -->
-                <a class="nav-link" href="manageWriters">Manage Writers</a>
+                <a id="manageWriters" class="nav-link" href="manageWriters">Manage Writers</a>
                 <!-- -->
-                <a class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
+                <a id="manageReviews" class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
                 <!-- -->
-                <a class="nav-link" href="updateBookList">Manage Books</a>
+                <a id="manageBooks" class="nav-link" href="updateBookList">Manage Books</a>
                 <!-- -->
-                <a class="nav-link" href="updateUserList">Manage Users</a>
+                <a id="manageUsers" class="nav-link" href="updateUserList">Manage Users</a>
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -41,13 +41,13 @@
         <form th:action="@{createBook}" th:object="${book}" method="post">
             <label class="form-label">Title:</label>
             <!-- -->
-            <input type="text" class="form-control mb-3" th:field="*{title}"/>
+            <input id="title" type="text" class="form-control mb-3" th:field="*{title}"/>
             <label class="form-label">Description:</label>
             <!-- -->
-            <textarea class="form-control mb-3" th:field="*{description}"/>
+            <textarea id="description" class="form-control mb-3" th:field="*{description}"/>
             <label class="form-label">Writer:</label>
             <!-- -->
-            <select class="form-control mb-3" th:field="*{writerId}">
+            <select id="writerId" class="form-control mb-3" th:field="*{writerId}">
                 <!-- -->
                     <!-- -->
                     <option th:each="writer : ${writers}" th:value="${writer.writerId}" th:text="${writer.name}"></option>
@@ -56,7 +56,7 @@
             </select>
             <label class="form-label">Publisher:</label>
             <!-- -->
-            <select class="form-control mb-3" th:field="*{publisherId}">
+            <select id="publisherId" class="form-control mb-3" th:field="*{publisherId}">
                 <!-- -->
                     <!-- -->
                     <option th:each="publisher : ${publishers}" th:value="${publisher.publisherId}" th:text="${publisher.name}"></option>
@@ -65,19 +65,19 @@
             </select>
             <label class="form-label">Cover:</label>
             <!-- -->
-            <input type="text" class="form-control mb-3" th:field="*{cover}"/>
+            <input id="cover" type="text" class="form-control mb-3" th:field="*{cover}"/>
             <label class="form-label">Picture:</label>
             <!-- -->
-            <input type="text" class="form-control mb-3" th:field="*{picture}"/>
+            <input id="picture" type="text" class="form-control mb-3" th:field="*{picture}"/>
 
             <br>
             <!-- -->
-            <input class="btn btn-primary" type="submit" value="Create book">
+            <input id="submitCreateBook" class="btn btn-primary" type="submit" value="Create book">
         <!-- -->
         </form>
         <br>
         <!-- -->
-        <div th:text="${message}"></div>
+        <div id="message" th:text="${message}"></div>
 
     </div>
 </div>

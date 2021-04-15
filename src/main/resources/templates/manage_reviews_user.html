@@ -17,13 +17,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <!-- -->
-            <a class="nav-link" th:href="@{'showBooks?userId='+${userId}+'&bookId='+${bookId}}">Show books</a>
+            <a id="showBooks" class="nav-link" th:href="@{'showBooks?userId='+${userId}+'&bookId='+${bookId}}">Show books</a>
             <!-- -->
-            <a class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
+            <a id="myReviews" class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
             <!-- -->
-            <a class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
+            <a id="updateMyInformation" class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
             <!-- -->
-            <a class="nav-link" th:href="showBooksGuest">Logout</a>
+            <a id="logout" class="nav-link" th:href="showBooksGuest">Logout</a>
           </div>
         </div>
       </div>
@@ -41,19 +41,19 @@
 
                         <span class="fw-bold"> Book:&nbsp;
                         <!-- -->
-                        <span th:text="${review.book.title}"/> </span>
+                        <span th:id="@{'title'+${review.reviewId}}" th:text="${review.book.title}"/> </span>
 
 
                             <p class="fst-italic">
-                            <img th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
+                            <img th:id="@{'stars'+${review.reviewId}}" th:src="@{'images/stars'+${review.stars}+'.png'}" width="80"/>
                             <!-- -->
-                            <span th:text="${review.description}"/>
+                            <span th:id="@{'description'+${review.reviewId}}" th:text="${review.description}"/>
                             </p>
                                 <!-- -->
-                                <a class="btn btn-danger"  th:href="@{'deleteReviewOnList?reviewId='+${review.reviewId}+'&bookId='+${review.book.bookId}+'&userId='+${userId}}">Delete</a>
+                                <a th:id="@{'delete'+${review.reviewId}}" class="btn btn-danger"  th:href="@{'deleteReviewOnList?reviewId='+${review.reviewId}+'&bookId='+${review.book.bookId}+'&userId='+${userId}}">Delete</a>
                                 &nbsp;
                                 <!-- -->
-                                <a class="btn btn-info" th:href="@{'updateReview?reviewId='+${review.reviewId}+'&bookId='+${review.book.bookId}+'&userId='+${userId}}">Update</a>
+                                <a th:id="@{'update'+${review.reviewId}}" class="btn btn-info" th:href="@{'updateReview?reviewId='+${review.reviewId}+'&bookId='+${review.book.bookId}+'&userId='+${userId}}">Update</a>
 
 
                     </div>
@@ -63,7 +63,7 @@
 
                     <br>
                         <!-- -->
-                        <div th:text="${message}"></div>
+                        <div id="message" th:text="${message}"></div>
 
 
             </div>

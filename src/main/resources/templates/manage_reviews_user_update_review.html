@@ -18,13 +18,13 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <!-- -->
-            <a class="nav-link" th:href="@{'showBooks?userId='+${userId}+'&bookId='+${bookId}}">Show books</a>
+            <a id="showBooks" class="nav-link" th:href="@{'showBooks?userId='+${userId}+'&bookId='+${bookId}}">Show books</a>
             <!-- -->
-            <a class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
+            <a id="myReviews" class="nav-link" th:href="@{'myReviews?userId='+${userId}}">My reviews</a>
             <!-- -->
-            <a class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
+            <a id="updateMyInformation" class="nav-link" th:href="@{'updateUserIndividual?userId='+${userId}}">Change personal information</a>
             <!-- -->
-            <a class="nav-link" th:href="showBooksGuest">Logout</a>
+            <a id="logout" class="nav-link" th:href="showBooksGuest">Logout</a>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <input type="hidden" th:field="*{bookId}" th:value="${bookId}"/>
         <label class="form-label">Stars:&nbsp;:</label>
         <!-- -->
-        <select class="form-control mb-3" th:field="*{stars}">
+        <select id="stars" class="form-control mb-3" th:field="*{stars}">
             <!-- -->
             <div th:each="str : ${starsList}">
                 <!-- -->
@@ -62,15 +62,15 @@
         </select>
         <label class="form-label">Description:</label>
         <!-- -->
-        <p><textarea class="form-control pb-2" placeholder="What do you think of the book?" th:field="*{description}"/></p>
+        <p><textarea id="description" class="form-control pb-2" placeholder="What do you think of the book?" th:field="*{description}"/></p>
         <!-- -->
-        <input class="btn btn-primary" type="submit" value="Update review">
+        <input id="submitUpdateReview" class="btn btn-primary" type="submit" value="Update review">
     <!-- -->
     </form>
 
 <br>
     <!-- -->
-    <div th:text="${message}"></div>
+    <div id="message" th:text="${message}"></div>
 
     </div>
     </div>

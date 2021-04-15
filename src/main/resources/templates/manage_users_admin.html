@@ -16,19 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="home">Home</a>
+                <a id="home" class="nav-link" href="home">Home</a>
                 <!-- -->
-                <a class="nav-link" href="updatePublisherList">Manage Publishers</a>
+                <a id="managePublishers" class="nav-link" href="updatePublisherList">Manage Publishers</a>
                 <!-- -->
-                <a class="nav-link" href="manageWriters">Manage Writers</a>
+                <a id="manageWriters" class="nav-link" href="manageWriters">Manage Writers</a>
                 <!-- -->
-                <a class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
+                <a id="manageReviews" class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
                 <!-- -->
-                <a class="nav-link" href="updateBookList">Manage Books</a>
+                <a id="manageBooks" class="nav-link" href="updateBookList">Manage Books</a>
                 <!-- -->
-                <a class="nav-link" href="updateUserList">Manage Users</a>
+                <a id="manageUsers" class="nav-link" href="updateUserList">Manage Users</a>
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -45,11 +45,11 @@
                         <img class="card-img-top mb-5" src="images/usuario.png"/>
                     </div>
                     <!-- -->
-                    <h4 class="linkS fs-5 text mb-4" th:text="${user.userName}"></h4>
+                    <h4 th:id="@{'user'+${user.userId}}" class="linkS fs-5 text mb-4" th:text="${user.userName}"></h4>
                     <!-- -->
-                    <a class="btn btn-primary" th:href="@{'updateUser?userId='+${user.userId}}">Edit</a>
+                    <a th:id="@{'edit'+${user.userId}}" class="btn btn-primary" th:href="@{'updateUser?userId='+${user.userId}}">Edit</a>
                     <!-- -->
-                    <a class="btn btn-danger" th:href="@{'deleteUser?userId='+${user.userId}}">Delete</a>
+                    <a th:id="@{'delete'+${user.userId}}" class="btn btn-danger" th:href="@{'deleteUser?userId='+${user.userId}}">Delete</a>
                 </div>
             </div>
         <!-- -->
@@ -57,7 +57,7 @@
 
     <br>
     <!-- -->
-    <div th:text="${message}"></div>
+    <div id="message" th:text="${message}"></div>
 
 </div>
 

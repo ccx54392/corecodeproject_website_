@@ -16,19 +16,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="home">Home</a>
+                <a id="home" class="nav-link" href="home">Home</a>
                 <!-- -->
-                <a class="nav-link" href="updatePublisherList">Manage Publishers</a>
+                <a id="managePublishers" class="nav-link" href="updatePublisherList">Manage Publishers</a>
                 <!-- -->
-                <a class="nav-link" href="manageWriters">Manage Writers</a>
+                <a id="manageWriters" class="nav-link" href="manageWriters">Manage Writers</a>
                 <!-- -->
-                <a class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
+                <a id="manageReviews" class="nav-link" href="deleteReviewListAdmin">Manage Reviews</a>
                 <!-- -->
-                <a class="nav-link" href="updateBookList">Manage Books</a>
+                <a id="manageBooks" class="nav-link" href="updateBookList">Manage Books</a>
                 <!-- -->
-                <a class="nav-link" href="updateUserList">Manage Users</a>
+                <a id="manageUsers" class="nav-link" href="updateUserList">Manage Users</a>
                 <!-- -->
-                <a class="nav-link" href="showBooksGuest">Logout</a>
+                <a id="logout" class="nav-link" href="showBooksGuest">Logout</a>
             </div>
         </div>
     </div>
@@ -43,13 +43,13 @@
             <input type="hidden" th:field="*{userId}" th:value="${userId}"/>
             <label class="form-label">User name:</label>
             <!-- -->
-            <input type="text" class="form-control mb-3" th:field="*{userName}"/>
+            <input id="userName" type="text" class="form-control mb-3" th:field="*{userName}"/>
             <label class="form-label">Password:</label>
             <!-- -->
-            <input type="password" class="form-control mb-3" th:field="*{password}" th:value="${password}"/>
+            <input id="password" type="password" class="form-control mb-3" th:field="*{password}" th:value="${password}"/>
             <label class="form-label">Role:</label>
             <!-- -->
-            <select class="form-control mb-3" th:field="*{role}">
+            <select id="role" class="form-control mb-3" th:field="*{role}">
                 <!-- -->
                     <!-- -->
                     <option th:each="rol : ${roles}" th:value="${rol}" th:text="${rol}"></option>
@@ -59,12 +59,12 @@
 
             <br>
             <!-- -->
-            <input class="btn btn-primary" type="submit" value="Update user">
+            <input id="submitUpdateUser" class="btn btn-primary" type="submit" value="Update user">
         <!-- -->
         </form>
         <br>
         <!-- -->
-        <div th:text="${message}"></div>
+        <div id="message" th:text="${message}"></div>
 
     </div>
 </div>
