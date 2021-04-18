@@ -56,6 +56,8 @@ public class LoginController {
 
 
                             model.put("userId", s.getUserId());
+                            model.put("errorMessage", "User logged in successfully");
+
                             return "page_user";
                         }
                     } else {
