@@ -47,6 +47,8 @@ public class LoginController {
                     if (s.getPassword().equals(login.getPassword())) {
                         if (s.getRole().equals("admin")) {
                             //model.put("userId", s.getUserId());
+                            model.put("errorMessage", "User logged in successfully");
+
                             return "page_admin";
                         } else {
 
