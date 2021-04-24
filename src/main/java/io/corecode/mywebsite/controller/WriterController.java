@@ -25,6 +25,12 @@ public class WriterController {
     @PostMapping("createWriter")
     public String createBook(@ModelAttribute("writer") Writer writer, Map<String,Object> model) throws Exception {
 
+        if(writer.getName().equals("")){
+            model.put("message","Writer name can not be empty");
+            return "manage_writers_admin_create_writer";
+
+        }
+
         int status = new WriterRepository().createWriter(writer);
 
         if(status==201){
