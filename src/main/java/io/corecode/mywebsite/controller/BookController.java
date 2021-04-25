@@ -47,12 +47,23 @@ public class BookController {
 
     @PostMapping("createBook")
     public String createBook(@ModelAttribute("book") Book book, Map<String,Object> model) throws Exception {
+
+        model.put("writers",new WriterRepository().getAllWriters());
+        model.put("publishers",new PublisherRepository().getAllPublishers());
+
+        if(book.getTitle().equals("")){
+            model.put("message","Book title can not be empty");
+            return "manage_books_admin_create_book";
+        }
+
         new BookRepository().createBook(book);
 
         book.setTitle("");
-        book.setWriterId(0);
-        book.setPublisherId(0);
+        //book.setWriterId(0);
+        //book.setPublisherId(0);
         book.setDescription("");
+        book.setCover("");
+        book.setPicture("");
 
         model.put("message","Book was successfully created");
 

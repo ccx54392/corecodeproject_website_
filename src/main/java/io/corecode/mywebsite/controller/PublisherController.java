@@ -26,6 +26,12 @@ public class PublisherController {
     @PostMapping("createPublisher")
     public String createBook(@ModelAttribute("publisher") Publisher publisher, Map<String,Object> model) throws Exception {
 
+        if(publisher.getName().equals("")){
+            model.put("message","Publisher name can not be empty");
+            return "manage_publishers_admin_create_publisher";
+
+        }
+
         //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(MyConstants.url+"publisher/")
                 .header("Content-Type", "application/json")

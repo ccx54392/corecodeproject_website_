@@ -27,6 +27,13 @@ public class ReviewController {
 
         model.put("book", new BookRepository().getBookById(review.getBookId()));
 
+        if(review.getDescription().equals("")){
+            model.put("message", "Review description can not be empty");
+            return "book";
+
+
+        }
+
         int status = new ReviewRepository().createReview(review);
 
         review.setDescription("");

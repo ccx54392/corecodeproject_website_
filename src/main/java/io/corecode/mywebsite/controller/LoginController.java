@@ -35,6 +35,11 @@ public class LoginController {
     public String doLogin(@ModelAttribute("login") Login login, Map<String, Object> model) throws Exception {
 
 
+        if(login.getUserName().equals("")){
+            model.put("errorMessage","User name can not be empty");
+            return "login";
+        }
+
         //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.get(MyConstants.url + "user").asString();
         if (response.getStatus() == 200) {

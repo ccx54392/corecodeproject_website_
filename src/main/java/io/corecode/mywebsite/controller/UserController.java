@@ -37,6 +37,11 @@ public class UserController {
 
         user.setRole("user");
 
+        if(user.getUserName().equals("")){
+            model.put("message","User name can not be empty");
+            return "create_user";
+        }
+
         //Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(MyConstants.url + "user/")
                 .header("Content-Type", "application/json")
